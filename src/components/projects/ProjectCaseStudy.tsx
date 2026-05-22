@@ -28,6 +28,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
         >
           <ProjectGallery
             projectNumber={projectNumber}
+            images={project.images}
             imageUrl={project.imageUrl}
             uiPreviewUrl={project.uiPreviewUrl}
           />

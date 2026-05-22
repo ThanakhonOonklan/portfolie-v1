@@ -1,28 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import { skills, skillCategories } from '@/data/skills';
+import { skills } from '@/data/skills';
 
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
-
-  // Group skills by category
-  const groupedSkills = skillCategories.reduce(
-    (acc, category) => {
-      acc[category] = skills.filter((s) => s.category === category);
-      return acc;
-    },
-    {} as Record<string, typeof skills>
-  );
-
-  // Asymmetrical grid spans for each category
-  const categoryLayout: Record<string, string> = {
-    Frontend: 'lg:col-span-5',
-    'UI/UX': 'lg:col-span-4 lg:col-start-7',
-    Animation: 'lg:col-span-6',
-    Tools: 'lg:col-span-3 lg:col-start-8',
-    'Backend Basics': 'lg:col-span-4 lg:col-start-2',
-  };
 
   return (
     <section
@@ -35,51 +17,48 @@ export default function Skills() {
       }}
     >
       <div className="section-container">
-        {/* Section Header */}
-        <div className="mb-[var(--space-block)]">
-          <span className="section-label block mb-4 gsap-reveal">What I Work With</span>
-          <h2 className="section-title gsap-reveal">TECH STACK</h2>
-        </div>
 
-        {/* Floating Skill Blocks — Asymmetrical Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-16 lg:gap-y-20">
-          {skillCategories.map((category, index) => (
+        {/* Label */}
+        <span className="section-label block mb-4 text-center gsap-reveal">What I Work With</span>
+
+        {/* Centered Title */}
+        <h2
+          className="section-title text-center mb-20 gsap-reveal"
+        >
+          TECH STACK
+        </h2>
+
+        {/* All icons — single open area, flex-wrap centered */}
+        <div className="flex flex-wrap justify-center gap-x-10 gap-y-10 gsap-reveal">
+          {skills.map((skill) => (
             <div
-              key={category}
-              className={`col-span-12 ${categoryLayout[category] || 'lg:col-span-4'} gsap-reveal`}
-              data-skill-index={index}
+              key={skill.name}
+              className="group flex flex-col items-center gap-3 cursor-default"
             >
-              {/* Category Block */}
-              <div
-                className="p-8 lg:p-10"
-                style={{
-                  border: '1px solid var(--border)',
-                  backgroundColor: 'var(--bg-secondary)',
-                }}
-              >
-                {/* Category Title */}
-                <h3
-                  className="font-[family-name:var(--font-heading)] text-white mb-8"
-                  style={{ fontSize: 'var(--text-title)' }}
-                >
-                  {category}
-                </h3>
+              {/* Icon */}
+              {skill.iconUrl ? (
+                <img
+                  src={skill.iconUrl}
+                  alt={skill.name}
+                  width={52}
+                  height={52}
+                  className="w-13 h-13 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+                />
+              ) : (
+                <div className="w-13 h-13 rounded bg-white/5" />
+              )}
 
-                {/* Skills List — large text items */}
-                <div className="space-y-4">
-                  {groupedSkills[category]?.map((skill) => (
-                    <p
-                      key={skill.name}
-                      className="text-[var(--text-body)] text-[var(--text-secondary)] font-[family-name:var(--font-body)] font-light hover:text-white transition-colors duration-300 cursor-default"
-                    >
-                      {skill.name}
-                    </p>
-                  ))}
-                </div>
-              </div>
+              {/* Name */}
+              <span
+                className="text-[var(--text-muted)] group-hover:text-white transition-colors duration-300 font-[family-name:var(--font-body)] text-center"
+                style={{ fontSize: 'var(--text-caption)' }}
+              >
+                {skill.name}
+              </span>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

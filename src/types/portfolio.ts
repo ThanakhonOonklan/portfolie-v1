@@ -14,6 +14,7 @@ export interface Project {
   techStack: string[];
   features: string[];
   results: string[];
+  images?: string[];
   imageUrl?: string;
   uiPreviewUrl?: string;
   githubUrl?: string;
@@ -28,6 +29,7 @@ export interface Project {
 export interface Skill {
   name: string;
   category: string;
+  iconUrl?: string;
 }
 
 // ============================================

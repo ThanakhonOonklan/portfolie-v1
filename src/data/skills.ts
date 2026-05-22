@@ -1,42 +1,32 @@
 import { Skill } from '@/types';
 
+const BASE = 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills';
+
 export const skills: Skill[] = [
   // Frontend
-  { name: 'React', category: 'Frontend' },
-  { name: 'Next.js', category: 'Frontend' },
-  { name: 'TypeScript', category: 'Frontend' },
-  { name: 'JavaScript', category: 'Frontend' },
-  { name: 'HTML5', category: 'Frontend' },
-  { name: 'CSS3', category: 'Frontend' },
-  { name: 'Tailwind CSS', category: 'Frontend' },
+  { name: 'HTML5',        category: 'Frontend',   iconUrl: `${BASE}/html5-colored.svg` },
+  { name: 'CSS3',         category: 'Frontend',   iconUrl: `${BASE}/css3-colored.svg` },
+  { name: 'JavaScript',   category: 'Frontend',   iconUrl: `${BASE}/javascript-colored.svg` },
+  { name: 'TypeScript',   category: 'Frontend',   iconUrl: `${BASE}/typescript-colored.svg` },
+  { name: 'React',        category: 'Frontend',   iconUrl: `${BASE}/react-colored.svg` },
+  { name: 'Next.js',      category: 'Frontend',   iconUrl: `${BASE}/nextjs-colored-dark.svg` },
+  { name: 'Tailwind CSS', category: 'Frontend',   iconUrl: `${BASE}/tailwindcss-colored.svg` },
+  { name: 'Material UI',  category: 'Frontend',   iconUrl: `${BASE}/materialui-colored.svg` },
 
-  // UI/UX
-  { name: 'Figma', category: 'UI/UX' },
-  { name: 'Responsive Design', category: 'UI/UX' },
-  { name: 'Design Systems', category: 'UI/UX' },
-  { name: 'Wireframing', category: 'UI/UX' },
-  { name: 'Prototyping', category: 'UI/UX' },
+  // Tools & Design
+  { name: 'VS Code',      category: 'Tools',      iconUrl: `${BASE}/visualstudiocode-colored.svg` },
+  { name: 'Figma',        category: 'Tools',      iconUrl: `${BASE}/figma-colored.svg` },
 
-  // Animation
-  { name: 'GSAP', category: 'Animation' },
-  { name: 'Framer Motion', category: 'Animation' },
-  { name: 'CSS Animations', category: 'Animation' },
-  { name: 'Three.js', category: 'Animation' },
-  { name: 'Lottie', category: 'Animation' },
+  // Backend & Database
+  { name: 'PHP',          category: 'Backend',    iconUrl: `${BASE}/php-colored.svg` },
+  { name: 'MySQL',        category: 'Backend',    iconUrl: `${BASE}/mysql-colored.svg` },
 
-  // Tools
-  { name: 'Git', category: 'Tools' },
-  { name: 'VS Code', category: 'Tools' },
-  { name: 'Vercel', category: 'Tools' },
-  { name: 'Docker', category: 'Tools' },
-  { name: 'Postman', category: 'Tools' },
-
-  // Backend Basics
-  { name: 'Node.js', category: 'Backend Basics' },
-  { name: 'Express', category: 'Backend Basics' },
-  { name: 'MongoDB', category: 'Backend Basics' },
-  { name: 'PostgreSQL', category: 'Backend Basics' },
-  { name: 'REST APIs', category: 'Backend Basics' },
+  // Other Technologies
+  { name: 'Python',       category: 'Other',      iconUrl: `${BASE}/python-colored.svg` },
+  { name: 'Java',         category: 'Other',      iconUrl: `${BASE}/java-colored.svg` },
+  { name: 'Flutter',      category: 'Other',      iconUrl: `${BASE}/flutter-colored.svg` },
+  { name: 'TensorFlow',   category: 'Other',      iconUrl: `${BASE}/tensorflow-colored.svg` },
+  { name: 'Arduino',      category: 'Other',      iconUrl: `${BASE}/arduino-colored.svg` },
 ];
 
-export const skillCategories = ['Frontend', 'UI/UX', 'Animation', 'Tools', 'Backend Basics'];
+export const skillCategories = ['Frontend', 'Backend', 'Tools', 'Other'];
