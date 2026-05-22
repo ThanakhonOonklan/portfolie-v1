@@ -1,0 +1,68 @@
+/* --- Selection --- */
+::selection {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* --- Focus Styles --- */
+*:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Utility Classes --- */
+
+/* Section container */
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
+}
+
+/* Section label — small uppercase tracked text */
+.section-label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+/* Section title — oversized Anton heading */
+.section-title {
+  font-size: var(--text-display);
+  color: var(--text-primary);
+  margin-bottom: var(--space-element);
+}
+
+/* Accent text */
+.text-accent {
+  color: var(--accent);
+}
+
+/* Divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}

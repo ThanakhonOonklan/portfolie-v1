@@ -1,0 +1,20 @@
+/* GSAP-ready: elements start invisible for animation */
+.gsap-reveal {
+  opacity: 1; /* visible by default, GSAP will control */
+}
+
+/* Scroll indicator animation */
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: scrollPulse 2s ease-in-out infinite;
+}

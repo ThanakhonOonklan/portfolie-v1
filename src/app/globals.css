@@ -1,0 +1,81 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ============================================
+   CINEMATIC PORTFOLIO — DESIGN SYSTEM
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  /* Colors */
+  --bg-primary: #000000;
+  --bg-secondary: #050505;
+  --bg-elevated: #0A0A0A;
+  --bg-surface: #111111;
+
+  --accent: #FF98A2;
+  --accent-hover: #FFB3BA;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #52525B;
+
+  --border: #1A1A1A;
+  --border-hover: #2A2A2A;
+
+  /* Typography */
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Typography Scale — cinematic oversized */
+  --text-hero: clamp(4rem, 10vw, 10rem);
+  --text-display: clamp(3rem, 6vw, 7rem);
+  --text-headline: clamp(2rem, 4vw, 4rem);
+  --text-title: clamp(1.25rem, 2vw, 2rem);
+  --text-body: clamp(1rem, 1.2vw, 1.25rem);
+  --text-caption: clamp(0.75rem, 1vw, 0.875rem);
+  --text-label: clamp(0.625rem, 0.8vw, 0.75rem);
+
+  /* Spacing Scale — cinematic rhythm */
+  --space-section: clamp(120px, 15vh, 200px);
+  --space-block: clamp(64px, 8vh, 120px);
+  --space-element: clamp(32px, 4vh, 64px);
+  --space-group: clamp(16px, 2vh, 32px);
+
+  /* Layout */
+  --max-width: 1400px;
+  --padding-x: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* --- Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Organized Concern-based Styles --- */
+@import "../styles/typography.css";
+@import "../styles/animations.css";
+@import "../styles/utilities.css";

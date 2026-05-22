@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "experience": "Experience",
+    "skills": "Skills",
+    "certificates": "Certificates",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "caption": "Creative Frontend Developer",
+    "tagline": "Crafting immersive digital experiences through modern frontend development, interactive design, and motion-driven interfaces.",
+    "cta_work": "View My Work",
+    "cta_contact": "Get In Touch",
+    "scroll": "Scroll"
+  }
+}

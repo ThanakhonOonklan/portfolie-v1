@@ -1,0 +1,44 @@
+/* --- Typography Base --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* --- Thai Font Override (Sarabun) --- */
+html[lang="th"],
+html[lang="th"] body {
+  font-family: var(--font-body), var(--font-thai), sans-serif;
+}
+
+/* Headings MUST always use Anton and NEVER switch to Sarabun */
+html[lang="th"] h1,
+html[lang="th"] h2,
+html[lang="th"] h3,
+html[lang="th"] h4,
+html[lang="th"] h5,
+html[lang="th"] h6,
+html[lang="th"] h1 span,
+html[lang="th"] h2 span,
+html[lang="th"] h3 span,
+html[lang="th"] h4 span,
+html[lang="th"] h5 span,
+html[lang="th"] h6 span {
+  font-family: var(--font-heading), sans-serif;
+}
+
+html[lang="th"] p,
+html[lang="th"] span:not(h1 span):not(h2 span):not(h3 span):not(h4 span):not(h5 span):not(h6 span),
+html[lang="th"] a,
+html[lang="th"] button,
+html[lang="th"] li {
+  font-family: var(--font-body), var(--font-thai), sans-serif;
+}
