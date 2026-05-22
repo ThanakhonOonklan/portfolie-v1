@@ -208,10 +208,10 @@ export default function Hero() {
               {!imgError ? (
                 <img
                   ref={portraitImageRef}
-                  src="/images/profile/portrait.png"
+                  src="/images/profile/profile-2.jpg"
                   alt="Thanakhon Oonklan Portrait"
                   onError={() => setImgError(true)}
-                  className="w-full h-full object-cover object-center grayscale contrast-[1.1] brightness-[0.85] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 ease-out scale-110"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out scale-100"
                 />
               ) : (
                 /* Fallback Cinematic Abstract Tech visual */

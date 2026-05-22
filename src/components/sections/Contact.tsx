@@ -6,13 +6,13 @@ export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [imgError, setImgError] = useState(false);
 
-  // Placeholders for your links. You can replace the '#' with your actual links anytime!
+  // Real contact links
   const socialLinks = {
-    facebook: '#',
-    instagram: '#',
-    linkedin: '#',
-    github: '#',
-    email: 'mailto:your.email@example.com',
+    facebook: 'https://www.facebook.com/thanakhon.oonklan',
+    instagram: 'https://www.instagram.com/jtnk__/',
+    linkedin: 'https://www.linkedin.com/in/thanakhon-oonklan-431766292/',
+    github: 'https://github.com/ThanakhonOonklan',
+    email: 'mailto:thanakhon.oonklan@gmail.com',
   };
 
   return (
@@ -60,8 +60,8 @@ export default function Contact() {
                 {/* The Avatar Image */}
                 {!imgError ? (
                   <img
-                    src="/images/profile/contact.png"
-                    alt="Contact Thanakhon"
+                    src="/images/profile/profile-2.jpg"
+                    alt="Thanakhon Oonklan - Contact"
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
@@ -98,7 +98,7 @@ export default function Contact() {
               className="text-[var(--text-secondary)] font-[family-name:var(--font-body)] mb-10 max-w-md leading-relaxed gsap-reveal"
               style={{ fontSize: 'var(--text-body)' }}
             >
-              Interested in working together? Feel free to reach out through any of the channels below — I&apos;m always open to great collaborations and new opportunities.
+              สนใจร่วมงานหรืออยากพูดคุยก็ยินดีเสมอครับ ไม่ว่าจะเป็นโปรเจกต์ ความร่วมมือ หรือแค่อยากแลกเปลี่ยนความคิดเห็น ติดต่อมาได้เลยครับ — ผมตอบทุกช่องทาง
             </p>
 
             {/* Clickable Social Icons (Facebook, IG, LinkedIn, GitHub, Email) */}
