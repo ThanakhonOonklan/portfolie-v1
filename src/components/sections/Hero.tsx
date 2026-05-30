@@ -68,45 +68,6 @@ export default function Hero() {
           }
         );
 
-        // 3. Scroll-linked Parallax for Portrait Wrapper relative to scroll depth down to #projects
-        gsap.fromTo(
-          portraitWrapperRef.current,
-          {
-            y: 0,
-          },
-          {
-            y: 120,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top top',
-              end: 'bottom top',
-              scrub: true,
-            },
-          }
-        );
-      }
-
-      // 4. Parallax scroll-effect on the inner image/abstract element itself
-      if (portraitImageRef.current) {
-        gsap.fromTo(
-          portraitImageRef.current,
-          {
-            yPercent: -12,
-            scale: 1.15,
-          },
-          {
-            yPercent: 12,
-            scale: 1.0,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top top',
-              end: 'bottom top',
-              scrub: true,
-            },
-          }
-        );
       }
 
       // 5. Scroll indicator fade out on scroll
@@ -142,9 +103,17 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: 'var(--bg-primary)' }}
     >
-      {/* Background visual area — placeholder for future 3D/canvas/video */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
+      {/* Background visual area — animated cinematic orbs */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Soft Pink Orb - Top Right */}
+        <div
+          className="absolute top-[-15%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(242,140,166,0.06)_0%,transparent_70%)] blur-[60px] animate-float-slow"
+        />
+        {/* Subtle Warm/White Orb - Bottom Left */}
+        <div
+          className="absolute bottom-[-10%] left-[-15%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.02)_0%,transparent_75%)] blur-[80px] animate-float-slower"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0F0F0F]/60" />
       </div>
 
       {/* Content */}
@@ -155,27 +124,28 @@ export default function Hero() {
             {/* Caption label */}
             <span
               ref={captionRef}
-              className="section-label mb-6 gsap-reveal"
+              className="section-label mb-6 gsap-reveal font-en-body"
             >
               {t('hero.caption')}
             </span>
 
             {/* Name — oversized Anton */}
-            <h1 className="mb-8 gsap-reveal">
+            <h1 className="mb-8 gsap-reveal font-en-heading">
               <span
                 ref={nameLine1Ref}
-                className="block"
+                className="block font-en-heading"
                 style={{ fontSize: 'var(--text-hero)', lineHeight: 0.9 }}
               >
                 THANAKHON
               </span>
               <span
                 ref={nameLine2Ref}
-                className="block"
+                className="block font-en-heading"
                 style={{
                   fontSize: 'var(--text-hero)',
                   lineHeight: 0.9,
                   color: 'var(--accent)',
+                  textShadow: '0 0 40px var(--glow-accent)',
                 }}
               >
                 OONKLAN
@@ -187,17 +157,13 @@ export default function Hero() {
           <div className="col-span-12 lg:col-span-5 flex items-center justify-center lg:justify-end mt-12 lg:mt-0 relative z-10">
             <div
               ref={portraitWrapperRef}
-              className="relative w-full max-w-[380px] aspect-[3/4] overflow-hidden border border-white/10 bg-black/40 group rounded-sm shadow-2xl backdrop-blur-sm transition-all duration-300 hover:border-white/20"
+              className="relative w-full max-w-[380px] aspect-[3/4] overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] group rounded-sm shadow-2xl backdrop-blur-md transition-all duration-300 glow-accent"
               style={{
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.02)',
               }}
             >
               {/* Outer Glow Effect on Hover */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent)]/5 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-              {/* Cinematic Scanlines / Grid overlay */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none z-20 opacity-45" />
-
               {/* Dynamic Tech Corners */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
               <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
@@ -243,17 +209,13 @@ export default function Hero() {
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10 pointer-events-none" />
 
-              {/* Technical Labels Overlay */}
-              <div className="absolute top-6 left-6 text-[9px] text-white/50 tracking-[0.2em] font-[family-name:var(--font-body)] uppercase z-20 pointer-events-none">
-                SYS.LOC // TH-BKK
-              </div>
 
               <div className="absolute bottom-6 left-6 flex flex-col gap-1 z-20 pointer-events-none">
-                <span className="text-[12px] text-white tracking-[0.1em] font-[family-name:var(--font-heading)] uppercase">
+                <h5 className="text-white tracking-[0.1em] font-[family-name:var(--font-thai)] uppercase font-bold">
                   THANAKHON OONKLAN
-                </span>
-                <span className="text-[9px] text-[var(--accent)] tracking-[0.15em] font-[family-name:var(--font-body)] uppercase font-semibold">
-                  DEVELOPER / DESIGNER
+                </h5>
+                <span className="text-[9px] text-[var(--accent)] tracking-[0.15em] font-[family-name:var(--font-thai)] uppercase font-semibold">
+                  {t('common.role').toUpperCase()}
                 </span>
               </div>
 

@@ -1,10 +1,12 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useTranslation } from '@/hooks';
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [imgError, setImgError] = useState(false);
+  const { t } = useTranslation();
 
   // Real contact links
   const socialLinks = {
@@ -19,6 +21,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
+      className="section-bg-gradient"
       style={{
         backgroundColor: 'var(--bg-secondary)',
         paddingTop: 'var(--space-section)',
@@ -45,16 +48,16 @@ export default function Contact() {
                   </defs>
                   <text className="fill-[color:var(--accent)] opacity-60 font-[family-name:var(--font-body)] text-[9.5px] uppercase tracking-[0.25em] font-medium">
                     <textPath href="#contactTextCircle" startOffset="0%">
-                      • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT
+                      {t('contact.badge')}
                     </textPath>
                   </text>
                 </svg>
               </div>
 
-              {/* Central Circular Avatar Wrapper */}
-              <div className="w-[250px] h-[250px] rounded-full overflow-hidden border-2 border-white/10 bg-neutral-900 shadow-2xl relative z-10 group">
+              {/* Central Circular Avatar Wrapper with Soft Pink Glow */}
+              <div className="w-[250px] h-[250px] rounded-full overflow-hidden border-2 border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-2xl relative z-10 group glow-accent backdrop-blur-md">
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-[var(--accent)]/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+                <div className="absolute inset-0 bg-[var(--accent)]/15 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
 
                 {/* The Avatar Image */}
@@ -82,23 +85,23 @@ export default function Contact() {
 
           {/* Right Side: Contact Text & Links (Facebook, IG, LinkedIn, GitHub, Email) */}
           <div className="col-span-12 md:col-span-6 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-            <span className="section-label block mb-4 text-[var(--accent)] font-semibold tracking-[0.2em] gsap-reveal">
-              GET IN TOUCH
+            <span className="section-label block mb-4 font-[family-name:var(--font-body)] text-[var(--accent)] font-semibold tracking-[0.2em] gsap-reveal">
+              {t('contact.label')}
             </span>
 
             {/* Bold Heading in Anton font */}
             <h2
-              className="font-[family-name:var(--font-heading)] text-white mb-6 tracking-wide gsap-reveal"
+              className="font-[family-name:var(--font-heading)] text-white mb-6 tracking-wide gsap-reveal font-en-heading"
               style={{ fontSize: 'var(--text-display)', lineHeight: 0.95 }}
             >
-              CONTACT
+              {t('contact.title')}
             </h2>
 
             <p
-              className="text-[var(--text-secondary)] font-[family-name:var(--font-body)] mb-10 max-w-md leading-relaxed gsap-reveal"
+              className="text-[var(--text-secondary)] font-[family-name:var(--font-body)] mb-14 max-w-md leading-relaxed gsap-reveal"
               style={{ fontSize: 'var(--text-body)' }}
             >
-              สนใจร่วมงานหรืออยากพูดคุยก็ยินดีเสมอครับ ไม่ว่าจะเป็นโปรเจกต์ ความร่วมมือ หรือแค่อยากแลกเปลี่ยนความคิดเห็น ติดต่อมาได้เลยครับ — ผมตอบทุกช่องทาง
+              {t('contact.desc')}
             </p>
 
             {/* Clickable Social Icons (Facebook, IG, LinkedIn, GitHub, Email) */}
@@ -107,7 +110,7 @@ export default function Contact() {
               {/* Email */}
               <a
                 href={socialLinks.email}
-                className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-white hover:bg-white/[0.08] transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="Email"
                 aria-label="Email"
               >
@@ -121,7 +124,7 @@ export default function Contact() {
                 href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-white hover:bg-white/[0.08] transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="Facebook"
                 aria-label="Facebook"
               >
@@ -130,26 +133,14 @@ export default function Contact() {
                 </svg>
               </a>
 
-              {/* Instagram */}
-              <a
-                href={socialLinks.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-white hover:bg-white/[0.08] transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
-                title="Instagram"
-                aria-label="Instagram"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
-              </a>
+
 
               {/* LinkedIn */}
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-white hover:bg-white/[0.08] transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="LinkedIn"
                 aria-label="LinkedIn"
               >
@@ -163,7 +154,7 @@ export default function Contact() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-white hover:bg-white/[0.08] transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="GitHub"
                 aria-label="GitHub"
               >

@@ -66,3 +66,48 @@
   height: 1px;
   background: var(--border);
 }
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text with soft pink gradient */
+.gradient-text-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Accent Glow on Hover */
+.glow-accent {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-accent:hover {
+  box-shadow: 0 0 24px var(--glow-accent);
+  border-color: rgba(242, 140, 166, 0.3) !important;
+}
+
+/* Radial section gradient depth overlay */
+.section-bg-gradient {
+  position: relative;
+}
+
+.section-bg-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(242, 140, 166, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+

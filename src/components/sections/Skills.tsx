@@ -2,9 +2,11 @@
 
 import { useRef } from 'react';
 import { skills } from '@/data/skills';
+import { useTranslation } from '@/hooks';
 
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -19,13 +21,13 @@ export default function Skills() {
       <div className="section-container">
 
         {/* Label */}
-        <span className="section-label block mb-4 text-center gsap-reveal">What I Work With</span>
+        <span className="section-label block mb-4 text-center gsap-reveal font-[family-name:var(--font-body)]">{t('skills_section.label')}</span>
 
         {/* Centered Title */}
         <h2
-          className="section-title text-center mb-20 gsap-reveal"
+          className="section-title text-center mb-20 gsap-reveal font-en-heading uppercase"
         >
-          TECH STACK
+          {t('skills_section.title')}
         </h2>
 
         {/* All icons — single open area, flex-wrap centered */}
@@ -50,7 +52,7 @@ export default function Skills() {
 
               {/* Name */}
               <span
-                className="text-[var(--text-muted)] group-hover:text-white transition-colors duration-300 font-[family-name:var(--font-body)] text-center"
+                className="text-[var(--text-muted)] group-hover:text-white transition-colors duration-300 font-[family-name:var(--font-body)] text-center font-en-body"
                 style={{ fontSize: 'var(--text-caption)' }}
               >
                 {skill.name}

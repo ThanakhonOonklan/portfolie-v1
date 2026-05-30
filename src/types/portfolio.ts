@@ -8,9 +8,10 @@ export interface Project {
   title: string;
   subtitle: string;
   summary: string;
-  problem: string;
-  solution: string;
-  process: string[];
+  problem?: string;
+  solution?: string;
+  process?: string[];
+  whatIDid: string[];
   techStack: string[];
   features: string[];
   results: string[];
@@ -21,6 +22,12 @@ export interface Project {
   liveUrl?: string;
   category: string;
   year: string;
+  // English translation fields
+  subtitleEn?: string;
+  summaryEn?: string;
+  whatIDidEn?: string[];
+  featuresEn?: string[];
+  resultsEn?: string[];
 }
 
 // ============================================
@@ -69,7 +76,7 @@ export interface Certificate {
   organization: string;
   year: string;
   imageUrl?: string;
-  skills: string[];
+  skills?: string[];
   credentialUrl?: string;
 }
 
@@ -88,4 +95,18 @@ export interface SocialLink {
 export interface NavItem {
   name: string;
   href: string;
+}
+
+// ============================================
+// OtherSkillItem — Design, Tools & Other Capabilities
+// ============================================
+export interface OtherSkillItem {
+  id: number;
+  title: string;
+  category: string;          // e.g. 'Design', 'Tools', 'Presentation'
+  description: string;
+  descriptionEn?: string;
+  tools: string[];           // software / tech used
+  images?: string[];
+  year: string;
 }

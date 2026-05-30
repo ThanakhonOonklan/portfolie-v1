@@ -1,15 +1,28 @@
 'use client';
 
 import { useRef } from 'react';
-import { experiences } from '@/data/experience';
+import { useTranslation } from '@/hooks';
+
+interface ExperienceItem {
+  year: string;
+  company: string;
+  role: string;
+  description: string[];
+  skills: string[];
+}
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
+
+  const items = t('experience.items', { returnObjects: true }) as ExperienceItem[];
+  const experienceItems = Array.isArray(items) ? items : [];
 
   return (
     <section
       id="experience"
       ref={sectionRef}
+      className="section-bg-gradient"
       style={{
         backgroundColor: 'var(--bg-secondary)',
         paddingTop: 'var(--space-section)',
@@ -19,24 +32,28 @@ export default function Experience() {
       <div className="section-container">
         {/* Section Header */}
         <div className="mb-[var(--space-block)]">
-          <span className="section-label block mb-4 gsap-reveal">Career Journey</span>
-          <h2 className="section-title gsap-reveal">EXPERIENCE</h2>
+          <span className="section-label block mb-4 gsap-reveal font-en-body">
+            {t('experience.label')}
+          </span>
+          <h2 className="section-title gsap-reveal font-en-heading">
+            {t('experience.title')}
+          </h2>
         </div>
 
         {/* Timeline */}
         <div className="flex flex-col" style={{ gap: 'var(--space-block)' }}>
-          {experiences.map((exp, index) => (
+          {experienceItems.map((exp, index) => (
             <div
-              key={exp.id}
+              key={index}
               className="gsap-reveal"
               data-experience-index={index}
             >
               {/* Timeline entry — year anchored left */}
               <div className="grid grid-cols-12 gap-4 lg:gap-8">
                 {/* Year Column */}
-                <div className="col-span-12 lg:col-span-2 flex lg:justify-end">
+                <div className="col-span-12 lg:col-span-2 flex lg:items-center lg:justify-end">
                   <span
-                    className="font-[family-name:var(--font-heading)] text-[var(--text-muted)] lg:text-right"
+                    className="font-[family-name:var(--font-heading)] text-[var(--text-muted)] lg:text-right font-en-heading"
                     style={{ fontSize: 'var(--text-headline)' }}
                   >
                     {exp.year}
@@ -45,17 +62,18 @@ export default function Experience() {
 
                 {/* Timeline Line Column */}
                 <div className="hidden lg:flex lg:col-span-1 justify-center relative">
-                  {/* Dot */}
+                  {/* Dot with pink pulse glow */}
                   <div
-                    className="w-3 h-3 rounded-full shrink-0 mt-3 z-10"
+                    className="w-3 h-3 rounded-full shrink-0 mt-3 z-10 border border-white/20 shadow-[0_0_10px_var(--glow-accent-lg)] animate-pulse"
                     style={{ backgroundColor: 'var(--accent)' }}
                   />
-                  {/* Line */}
-                  {index < experiences.length - 1 && (
+                  {/* Connector line */}
+                  {index < experienceItems.length - 1 && (
                     <div
                       className="absolute top-6 bottom-0 w-px"
                       style={{
-                        backgroundColor: 'var(--border)',
+                        background: 'linear-gradient(to bottom, var(--accent) 0%, rgba(255, 255, 255, 0.05) 100%)',
+                        opacity: 0.4,
                         left: '50%',
                         transform: 'translateX(-50%)',
                         height: 'calc(100% + var(--space-block))',
@@ -66,57 +84,50 @@ export default function Experience() {
 
                 {/* Content Column */}
                 <div className="col-span-12 lg:col-span-9">
-                  {/* Role & Company */}
+                  {/* Role */}
                   <h3
-                    className="font-[family-name:var(--font-heading)] text-white mb-2"
+                    className="font-[family-name:var(--font-heading)] text-white mb-4 font-en-heading"
                     style={{ fontSize: 'var(--text-title)' }}
                   >
                     {exp.role}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-3 mb-1">
-                    <span className="text-[var(--accent)] font-[family-name:var(--font-body)] font-medium">
-                      {exp.company}
+
+                  {/* Company */}
+                  <p className="text-[var(--text-body)] text-[var(--accent)] mb-8 font-[family-name:var(--font-body)] font-medium">
+                    {exp.company}
+                  </p>
+
+                  {/* Description / Responsibilities */}
+                  <div className="mb-10">
+                    <span className="section-label block mb-4 font-[family-name:var(--font-body)]">
+                      {t('experience.description_label')}
                     </span>
-                    <span className="w-4 h-px bg-[var(--text-muted)]" />
-                    <span className="text-[var(--text-caption)] text-[var(--text-muted)] font-[family-name:var(--font-body)]">
-                      {exp.period}
-                    </span>
+                    <ul className="space-y-3.5">
+                      {exp.description.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-[family-name:var(--font-body)]"
+                        >
+                          <span className="text-[var(--accent)] shrink-0 h-[1.625em] flex items-center justify-center">
+                            <div className="w-1.5 h-1.5 rounded-full bg-current" />
+                          </span>
+                          <span className="leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  {exp.location && (
-                    <p className="text-[var(--text-caption)] text-[var(--text-muted)] mb-6 font-[family-name:var(--font-body)]">
-                      {exp.location}
-                    </p>
-                  )}
 
-                  {/* Description */}
-                  <ul className="space-y-3 mb-8">
-                    {exp.description.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-[var(--text-body)] text-[var(--text-secondary)] font-[family-name:var(--font-body)]"
-                      >
-                        <span className="text-[var(--text-muted)] mt-2 shrink-0">
-                          <svg width="4" height="4" viewBox="0 0 4 4" fill="currentColor">
-                            <rect width="4" height="4" />
-                          </svg>
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Skills Learned */}
+                  {/* Skills */}
                   {exp.skills.length > 0 && (
                     <div>
-                      <span className="section-label block mb-3">Skills</span>
-                      <div className="flex flex-wrap gap-2">
+                      <span className="section-label block mb-3 font-[family-name:var(--font-body)]">
+                        {t('experience.skills_label')}
+                      </span>
+                      <div className="flex flex-wrap gap-2 font-[family-name:var(--font-body)] text-xs text-[var(--text-secondary)]">
                         {exp.skills.map((skill) => (
                           <span
                             key={skill}
-                            className="text-[var(--text-caption)] text-[var(--text-secondary)] font-[family-name:var(--font-body)] px-3 py-1.5"
-                            style={{
-                              border: '1px solid var(--border)',
-                            }}
+                            className="px-3 py-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-full hover:border-[var(--accent)] hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-[0_0_12px_var(--glow-accent)] hover:bg-white/[0.01] font-en-body"
                           >
                             {skill}
                           </span>
@@ -124,29 +135,11 @@ export default function Experience() {
                       </div>
                     </div>
                   )}
-
-                  {/* Image Area Placeholder */}
-                  {exp.imageUrl && (
-                    <div
-                      className="mt-8 w-full max-w-[500px] overflow-hidden"
-                      style={{
-                        aspectRatio: '16 / 9',
-                        backgroundColor: 'var(--bg-elevated)',
-                        border: '1px solid var(--border)',
-                      }}
-                    >
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-[var(--text-caption)] text-[var(--text-muted)] font-[family-name:var(--font-body)] uppercase tracking-widest">
-                          Image
-                        </span>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
 
               {/* Divider */}
-              {index < experiences.length - 1 && (
+              {index < experienceItems.length - 1 && (
                 <div className="divider mt-[var(--space-block)] lg:ml-[calc(2/12*100%+1/12*100%)]" />
               )}
             </div>
@@ -156,3 +149,4 @@ export default function Experience() {
     </section>
   );
 }
+

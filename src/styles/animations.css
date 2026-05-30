@@ -18,3 +18,36 @@
 .scroll-indicator {
   animation: scrollPulse 2s ease-in-out infinite;
 }
+
+/* Glow Pulse Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(242, 140, 166, 0.12), inset 0 0 4px rgba(242, 140, 166, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(242, 140, 166, 0.25), inset 0 0 8px rgba(242, 140, 166, 0.1);
+  }
+}
+
+.accent-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Gentle floating motion for background orbs */
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: floatY 8s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: floatY 12s ease-in-out infinite;
+}
+

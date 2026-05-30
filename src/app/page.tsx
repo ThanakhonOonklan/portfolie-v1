@@ -1,7 +1,8 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Navbar } from '@/components/layout';
 import {
   Hero,
   Projects,
+  OtherSkills,
   Experience,
   Skills,
   Certificates,
@@ -16,11 +17,11 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
+      <OtherSkills />
       <Experience />
       <Skills />
       <Certificates />
       <Contact />
-      <Footer />
     </main>
   );
 }

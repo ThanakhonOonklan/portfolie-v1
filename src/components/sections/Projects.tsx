@@ -3,9 +3,11 @@
 import { useRef } from 'react';
 import { projects } from '@/data/projects';
 import { ProjectCaseStudy } from '@/components/projects';
+import { useTranslation } from '@/hooks';
 
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -20,8 +22,8 @@ export default function Projects() {
       <div className="section-container">
         {/* Section Header */}
         <div className="mb-[var(--space-block)]">
-          <span className="section-label block mb-4 gsap-reveal">Selected Work</span>
-          <h2 className="section-title gsap-reveal">FEATURED PROJECTS</h2>
+          <span className="section-label block mb-4 gsap-reveal font-[family-name:var(--font-body)]">{t('projects.label')}</span>
+          <h2 className="section-title gsap-reveal font-en-heading uppercase">{t('projects.title')}</h2>
         </div>
 
         {/* Projects List */}

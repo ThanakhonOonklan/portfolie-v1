@@ -1,18 +1,75 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useTranslation } from '@/hooks';
+import { gsap } from 'gsap';
+import { registerGSAP } from '@/lib/gsap';
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
-  const { locale } = useTranslation();
+  const [imgError, setImgError] = useState(false);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    registerGSAP();
+
+    const ctx = gsap.context(() => {
+      // Smooth fadeUp reveal for the image on scroll
+      if (imageRef.current) {
+        gsap.fromTo(
+          imageRef.current,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      // Smooth fadeUp reveal for the story details
+      if (storyRef.current) {
+        gsap.fromTo(
+          storyRef.current,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            delay: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       id="about"
       ref={sectionRef}
+      className="section-bg-gradient"
       style={{
         backgroundColor: 'var(--bg-primary)',
         paddingTop: 'var(--space-section)',
@@ -26,133 +83,142 @@ export default function About() {
           <div className="col-span-12 lg:col-span-5">
             <div
               ref={imageRef}
-              className="gsap-reveal sticky top-27 w-full max-w-[360px] xl:max-w-[420px] mx-auto lg:mx-0"
+              className="sticky top-28 w-full max-w-[360px] xl:max-w-[420px] mx-auto lg:mx-0"
             >
               {/* About Me Portrait */}
               <div
-                className="w-full overflow-hidden rounded-sm border border-white/10 shadow-2xl relative group bg-neutral-900"
+                className="w-full overflow-hidden rounded-sm border border-[var(--glass-border)] shadow-2xl relative group bg-[var(--glass-bg)] backdrop-blur-md glow-accent"
                 style={{ aspectRatio: '3 / 4' }}
               >
-                {/* Tech scanline overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[size:100%_4px] pointer-events-none z-10 opacity-30" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
-
                 {/* Actual photo */}
-                <img
-                  src="/images/profile/profile-1.jpg"
-                  alt="Thanakhon Oonklan - About"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
+                {!imgError ? (
+                  <img
+                    src="/images/profile/profile-1.jpg"
+                    alt="Thanakhon Oonklan - About"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    onError={() => setImgError(true)}
+                  />
+                ) : (
+                  /* Fallback Cinematic Abstract Tech visual */
+                  <div className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-neutral-950 to-black p-8">
+                    {/* Glowing background circles */}
+                    <div className="absolute w-[200px] h-[200px] rounded-full bg-[var(--accent)]/10 blur-[80px] animate-pulse" />
+
+                    {/* Digital cyber grid */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+
+                    {/* Aesthetic geometric elements */}
+                    <svg className="w-20 h-20 text-white/20 mb-6 relative z-10" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                      <circle cx="50" cy="50" r="40" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_120s_linear_infinite]" />
+                      <circle cx="50" cy="50" r="30" strokeWidth="1.5" strokeDasharray="10 5" className="animate-[spin_60s_linear_infinite_reverse] text-[var(--accent)]/40" />
+                      <polygon points="50,25 72,65 28,65" strokeWidth="1" />
+                      <line x1="50" y1="10" x2="50" y2="90" strokeWidth="0.5" strokeDasharray="2 2" />
+                      <line x1="10" y1="50" x2="90" y2="50" strokeWidth="0.5" strokeDasharray="2 2" />
+                    </svg>
+
+                    <span className="text-[11px] text-white/60 tracking-[0.2em] font-[family-name:var(--font-body)] uppercase z-10 text-center mb-1">
+                      รูปสุดหล่อ
+                    </span>
+                    <span className="text-[9px] text-[var(--accent)] tracking-[0.1em] font-[family-name:var(--font-body)] uppercase z-10 text-center opacity-80">
+                      ไม่สามารถโหลดรูปภาพได้
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
           {/* Right — Content */}
-          <div className="col-span-12 lg:col-span-6 lg:col-start-7" ref={storyRef}>
+          <div className="col-span-12 lg:col-span-6 lg:col-start-7 flex flex-col justify-center" ref={storyRef}>
             {/* Section Label */}
-            <span className="section-label block mb-6 gsap-reveal">About Me</span>
+            <span className="section-label block mb-2 font-[family-name:var(--font-body)]">{t('about.label')}</span>
 
-            {/* Personal Story */}
-            <div className="mb-12 gsap-reveal">
-              {locale === 'th' ? (
-                <div className="space-y-10">
-                  {/* Highlighted Intro Quote */}
-                  <div className="py-2">
-                    <p
-                      className="text-white font-[family-name:var(--font-body)] leading-relaxed font-light"
-                      style={{ fontSize: 'var(--text-title)' }}
-                    >
-                      สวัสดีครับ ผมชื่อ <span className="text-[var(--accent)] font-medium">ธนกรณ์ อ่อนกลั่น</span> ชื่อเล่น <span className="text-[var(--accent)] font-medium">เจเจ</span> ปัจจุบันกำลังศึกษางาน backend เพื่อไปสู่การเป็น <span className="text-white font-semibold whitespace-nowrap">Full Stack Developer</span> ในอนาคต
-                    </p>
-                  </div>
+            {/* Big Section Title */}
+            <h2 className="section-title uppercase mb-8 font-en-heading">
+              BIOGRAPHY
+            </h2>
 
-                  {/* Elegant horizontal line separating intro quote from the rest */}
-                  <div className="h-[1px] w-full bg-gradient-to-r from-[var(--accent)]/50 via-white/10 to-transparent mt-10 mb-10" />
+            {/* Intro sentence — placeholder dashes */}
+            <div className="space-y-8">
 
-                  {/* Education & Related Coursework */}
-                  <div className="">
-                    <h4 className="text-xs font-[family-name:var(--font-body)] tracking-[0.2em] text-[var(--accent)] mb-4 uppercase font-semibold">
-                      การศึกษา
+
+              {/* Vertical Stack of structured content blocks (clean minimalist text entries) */}
+              <div className="flex flex-col gap-14 pt-10">
+                {/* Block 1: Who I Am */}
+                <div className="space-y-4 group">
+                  <div className="flex items-center gap-3 transition-all duration-300 group-hover:translate-x-2">
+                    <span className="text-[var(--accent)] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_8px_var(--glow-accent)]">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </span>
+                    <h4 className="text-base md:text-lg tracking-[0.1em] text-[var(--accent)] group-hover:text-white uppercase transition-colors duration-300">
+                      {t('about.who_i_am_title')}
                     </h4>
-                    <div className="space-y-6 text-[var(--text-secondary)] font-[family-name:var(--font-body)]">
-                      <div>
-                        <strong className="text-white block font-medium text-lg leading-relaxed">
-                          มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี
-                        </strong>
-                        <p className="leading-relaxed text-sm mt-1">
-                          หลักสูตรอุตสาหกรรมศาสตรบัณฑิต สาขาเทคโนโลยีสารสนเทศและการจัดการอุตสาหกรรม
-                        </p>
-                      </div>
-                    </div>
                   </div>
-
-                  {/* Professional Philosophy block */}
-                  <div className="mt-12 pt-12 border-t border-white/10">
-                    <h4 className="text-xs font-[family-name:var(--font-body)] tracking-[0.2em] text-[var(--accent)] mb-4 uppercase font-semibold">
-                      วิสัยทัศน์และการทำงาน
-                    </h4>
-                    <p
-                      className="text-[var(--text-secondary)] leading-relaxed font-[family-name:var(--font-body)]"
-                      style={{ fontSize: 'var(--text-body)' }}
-                    >
-                      เป้าหมายของผมคือการเป็นนักพัฒนาที่สามารถ <strong className="text-white font-semibold">เชื่อมต่อทั้งการออกแบบและการเขียนโค้ดเข้าหากันได้อย่างไร้รอยต่อ</strong> ผมเชื่อมั่นว่าผลิตภัณฑ์ดิจิทัลที่ดีไม่ใช่แค่ความสวยงาม แต่ต้องใช้งานได้จริง มีเหตุผล และช่วยมอบคุณค่าที่แท้จริงให้แก่ผู้ใช้งาน
-                    </p>
-                  </div>
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                    {t('about.who_i_am_desc')}
+                  </p>
                 </div>
-              ) : (
-                <>
-                  <p
-                    className="text-[var(--text-secondary)] mb-8 leading-relaxed font-[family-name:var(--font-body)]"
-                    style={{ fontSize: 'var(--text-body)' }}
-                  >
-                    I&apos;m a passionate frontend developer with a deep love for
-                    creating innovative digital experiences. With expertise in modern
-                    web technologies, I bring ideas to life through clean code,
-                    thoughtful design, and purposeful motion.
+
+                {/* Block 2: Interests */}
+                <div className="space-y-4 group">
+                  <div className="flex items-center gap-3 transition-all duration-300 group-hover:translate-x-2">
+                    <span className="text-[var(--accent)] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_8px_var(--glow-accent)]">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                      </svg>
+                    </span>
+                    <h4 className="text-base md:text-lg tracking-[0.1em] text-[var(--accent)] group-hover:text-white uppercase transition-colors duration-300">
+                      {t('about.interest_title')}
+                    </h4>
+                  </div>
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                    {t('about.interest_desc')}
                   </p>
-                  <p
-                    className="text-[var(--text-secondary)] mb-8 leading-relaxed font-[family-name:var(--font-body)]"
-                    style={{ fontSize: 'var(--text-body)' }}
-                  >
-                    My journey in tech started with curiosity and has evolved into a
-                    career focused on building user-centric applications that make a
-                    real difference. I enjoy tackling complex problems and
-                    transforming them into elegant, interactive solutions.
+                </div>
+
+                {/* Block 3: Education & Learning */}
+                <div className="space-y-4 group">
+                  <div className="flex items-center gap-3 transition-all duration-300 group-hover:translate-x-2">
+                    <span className="text-[var(--accent)] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_8px_var(--glow-accent)]">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" />
+                      </svg>
+                    </span>
+                    <h4 className="text-base md:text-lg tracking-[0.1em] text-[var(--accent)] group-hover:text-white uppercase transition-colors duration-300">
+                      {t('about.education_title')}
+                    </h4>
+                  </div>
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                    {t('about.education_desc')}
                   </p>
-                  <p
-                    className="text-[var(--text-secondary)] mb-8 leading-relaxed font-[family-name:var(--font-body)]"
-                    style={{ fontSize: 'var(--text-body)' }}
-                  >
-                    Every project I take on is an opportunity to push creative
-                    boundaries — whether it&apos;s through scroll-driven storytelling,
-                    micro-interactions, or immersive 3D experiences.
+                </div>
+
+                {/* Block 4: My Goals */}
+                <div className="space-y-4 group">
+                  <div className="flex items-center gap-3 transition-all duration-300 group-hover:translate-x-2">
+                    <span className="text-[var(--accent)] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_8px_var(--glow-accent)]">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </span>
+                    <h4 className="text-base md:text-lg tracking-[0.1em] text-[var(--accent)] group-hover:text-white uppercase transition-colors duration-300">
+                      {t('about.goals_title')}
+                    </h4>
+                  </div>
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                    {t('about.goals_desc')}
                   </p>
-                  <p
-                    className="text-[var(--text-secondary)] mb-8 leading-relaxed font-[family-name:var(--font-body)]"
-                    style={{ fontSize: 'var(--text-body)' }}
-                  >
-                    On the technical side, I specialize in building scalable web architectures using React, Next.js, and TypeScript. I have a deep appreciation for semantic HTML, modern styling tools like Tailwind CSS, and optimization techniques that keep bundle sizes small and render times blazing fast.
-                  </p>
-                  <p
-                    className="text-[var(--text-secondary)] mb-8 leading-relaxed font-[family-name:var(--font-body)]"
-                    style={{ fontSize: 'var(--text-body)' }}
-                  >
-                    I believe that motion design is a critical aspect of modern user experience. By leveraging libraries like GSAP, ScrollTrigger, and smooth scroll adapters like Lenis, I create interfaces that respond organically to user behavior, establishing a seamless link between navigation and visual storytelling.
-                  </p>
-                  <p
-                    className="text-[var(--text-secondary)] leading-relaxed font-[family-name:var(--font-body)]"
-                    style={{ fontSize: 'var(--text-body)' }}
-                  >
-                    Collaboration is at the core of my workflow. I enjoy partnering with talented designers to translate Figma layouts into pixel-perfect code, and syncing with backend developers to design robust API integrations. I'm always looking to learn, explore new technologies, and push the limits of what is possible on the web.
-                  </p>
-                </>
-              )}
+                </div>
+              </div>
             </div>
-
-
           </div>
         </div>
       </div>
     </section>
   );
 }
+

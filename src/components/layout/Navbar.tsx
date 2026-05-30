@@ -8,7 +8,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
-  
+
   const { t } = useTranslation();
   const { locale, setLocale } = useLocale();
 
@@ -37,11 +37,10 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-black/80 backdrop-blur-md border-b border-[var(--border)]'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+        ? 'bg-[#0F0F0F]/85 backdrop-blur-xl border-b border-[var(--glass-border)]'
+        : 'bg-transparent'
+        }`}
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
@@ -49,21 +48,23 @@ export default function Navbar() {
           <a
             href="#hero"
             onClick={(e) => handleClick(e, '#hero')}
-            className="font-[family-name:var(--font-heading)] text-xl tracking-wider text-white hover:text-[var(--accent)] transition-colors duration-300"
+            className="hover:text-[var(--accent)] transition-colors duration-300"
           >
-            THANAKHON
+            <h5 className="font-[family-name:var(--font-heading)] font-en-heading text-xl tracking-wider text-white hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_rgba(242,140,166,0.5)] transition-all duration-300 inline-block">
+              THANAKHON
+            </h5>
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
-              const key = item.href.replace('#', '');
+              const key = item.href.replace('#', '').replace(/-/g, '_');
               return (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className="text-[var(--text-caption)] font-[family-name:var(--font-body)] font-medium uppercase tracking-[0.15em] text-[var(--text-secondary)] hover:text-white transition-colors duration-300"
+                  className="text-[15px] font-[family-name:var(--font-body)] font-medium uppercase tracking-[0.15em] text-[var(--text-secondary)] hover:text-white transition-colors duration-300"
                 >
                   {t(`nav.${key}`)}
                 </a>
@@ -101,19 +102,16 @@ export default function Navbar() {
             >
               <div className="w-6 flex flex-col gap-1.5">
                 <span
-                  className={`block h-px bg-white transition-all duration-300 ${
-                    isMobileOpen ? 'rotate-45 translate-y-[7px]' : ''
-                  }`}
+                  className={`block h-px bg-white transition-all duration-300 ${isMobileOpen ? 'rotate-45 translate-y-[7px]' : ''
+                    }`}
                 />
                 <span
-                  className={`block h-px bg-white transition-all duration-300 ${
-                    isMobileOpen ? 'opacity-0' : ''
-                  }`}
+                  className={`block h-px bg-white transition-all duration-300 ${isMobileOpen ? 'opacity-0' : ''
+                    }`}
                 />
                 <span
-                  className={`block h-px bg-white transition-all duration-300 ${
-                    isMobileOpen ? '-rotate-45 -translate-y-[7px]' : ''
-                  }`}
+                  className={`block h-px bg-white transition-all duration-300 ${isMobileOpen ? '-rotate-45 -translate-y-[7px]' : ''
+                    }`}
                 />
               </div>
             </button>
@@ -121,15 +119,13 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
-        className={`md:hidden transition-all duration-500 overflow-hidden ${
-          isMobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`md:hidden transition-all duration-500 overflow-hidden bg-[#0F0F0F]/90 backdrop-blur-xl border-b border-[var(--glass-border)] ${isMobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <div className="section-container pb-8 flex flex-col gap-6">
           {navItems.map((item) => {
-            const key = item.href.replace('#', '');
+            const key = item.href.replace('#', '').replace(/-/g, '_');
             return (
               <a
                 key={item.name}

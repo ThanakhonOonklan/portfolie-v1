@@ -1,17 +1,126 @@
 {
+  "common": {
+    "name_first": "ธนกรณ์",
+    "name_last": "อ่อนกลั่น",
+    "name_full": "ธนกรณ์ อ่อนกลั่น",
+    "role": "Junior Frontend Developer"
+  },
   "nav": {
     "projects": "ผลงาน",
+    "other_skills": "ทักษะอื่นๆ",
     "experience": "ประสบการณ์",
-    "skills": "ทักษะ",
-    "certificates": "ใบรับรอง",
+    "skills": "เครื่องมือที่ใช้",
+    "certificates": "ประกาศนียบัตร",
     "about": "เกี่ยวกับฉัน",
     "contact": "ติดต่อ"
   },
   "hero": {
-    "caption": "นักพัฒนาฟรอนต์เอนด์เชิงสร้างสรรค์",
+    "caption": "Junior Frontend Developer",
     "tagline": "สร้างสรรค์ประสบการณ์ดิจิทัลที่ชวนดื่มด่ำผ่านการพัฒนาฟรอนต์เอนด์ที่ทันสมัย การออกแบบเชิงโต้ตอบ และอินเทอร์เฟซที่ขับเคลื่อนด้วยการเคลื่อนไหว",
     "cta_work": "ดูผลงานของฉัน",
     "cta_contact": "ติดต่อฉัน",
     "scroll": "เลื่อนลง"
+  },
+  "about": {
+    "label": "เกี่ยวกับฉัน",
+    "who_i_am_title": "ตัวตนของผม",
+    "who_i_am_desc": "สวัสดีครับ ผมชื่อ ธนกรณ์ อ่อนกลั่น หรือเรียกว่า \"เจ\" ก็ได้ครับ ผมเป็นคนที่ชอบสร้างสิ่งที่ใช้งานได้จริง ไม่ว่าจะเป็นเว็บเเอปพลิเคชั่น หรือหุ่นยนต์ก็เช่นกัน\nปัจจุบันกำลังศึกษาด้าน Frontend Development และ UX/UI Design อยู่ครับ",
+    "interest_title": "สิ่งที่สนใจ",
+    "interest_desc": "ผมสนใจการสร้าง เว็บเเอปพลิเคชั่น โดยเฉพาะด้วย Next.js และ TypeScript นอกจากนี้ยังชอบเรื่อง Robotics และ IoT ครับ",
+    "education_title": "ระดับการศึกษา",
+    "education_desc": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี (ชั้นปีที่ 2)\nหลักสูตรอุตสาหกรรมศาสตรบัณฑิต สาขาเทคโนโลยีสารสนเทศ (ภาคต่อเนื่อง)",
+    "goals_title": "เป้าหมายของผม",
+    "goals_desc": "เป้าหมายระยะสั้นคือการเป็น Frontend Developer ก่อน ส่วนเป้าหมายระยะยาวคืออยากเติบโตเป็น Full Stack Developer ที่สามารถสร้าง product ได้ตั้งแต่ต้นจนจบ และใช้ความรู้ด้าน IoT มาสร้างสิ่งที่มีประโยชน์ครับ"
+  },
+  "projects": {
+    "label": "ผลงานที่คัดสรร",
+    "title": "FEATURED PROJECTS",
+    "what_i_did": "สิ่งที่ฉันทำในโปรเจกต์",
+    "tech_stack": "เทคโนโลยีที่ใช้",
+    "key_features": "ฟีเจอร์เด่นของโปรเจกต์",
+    "results": "ผลลัพธ์ที่ได้รับ"
+  },
+  "other_skills": {
+    "label": "ทักษะอื่นๆ",
+    "title": "Other Skills",
+    "tools_label": "เครื่องมือที่ใช้",
+    "view_image": "ดูรูปภาพ"
+  },
+  "skills_section": {
+    "label": "เครื่องมือที่ใช้ทำงาน",
+    "title": "TECH STACK"
+  },
+  "experience": {
+    "label": "เส้นทางการทำงาน",
+    "title": "EXPERIENCE",
+    "description_label": "รายละเอียดงาน / ความรับผิดชอบ",
+    "skills_label": "ทักษะที่ใช้",
+    "items": [
+      {
+        "year": "2026",
+        "company": "Thinking Skills Games for Kids",
+        "role": "Frontend Developer",
+        "description": [
+          "พัฒนา UI และระบบเกมทั้งหมด 7 มินิเกม 9 ด่านร่วม 63 ด่าน",
+          "ออกแบบและพัฒนาสำหรับกลุ่มเป้าหมายเด็กอายุ 5–7 ปี",
+          "พัฒนาระบบอนิเมชัน และ Game Logic ภายในเกม",
+          "รองรับ 2 ภาษา (ไทย/อังกฤษ)"
+        ],
+        "skills": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "PostgreSQL",
+          "Figma"
+        ]
+      },
+      {
+        "year": "2025",
+        "company": "ระบบยืม-คืนอุปกรณ์ IoT",
+        "role": "Freelance Full Stack Developer",
+        "description": [
+          "รับจ้างพัฒนาระบบยืม-คืนอุปกรณ์ IoT แบบเว็บแอปพลิเคชัน",
+          "พัฒนาทั้ง Frontend และ Backend ครอบคลุมระบบจัดการอุปกรณ์และผู้ใช้งาน",
+          "ออกแบบฐานข้อมูลและ UI ตั้งแต่ต้นจนจบ"
+        ],
+        "skills": [
+          "React",
+          "Tailwind CSS",
+          "TypeScript",
+          "PHP",
+          "MySQL",
+          "Supabase",
+          "Vercel"
+        ]
+      },
+      {
+        "year": "2025",
+        "company": "Wireless Solution Asia",
+        "role": "Internship — Robotics & IoT Developer",
+        "description": [
+          "พัฒนาหุ่นยนต์ ESP32 ที่ควบคุมผ่านมือถือ พร้อมเขียนคำสั่งการเคลื่อนไหวและการคีบจับ",
+          "สอนและสาธิตการใช้งานหุ่นยนต์ให้กับเด็กนักเรียน",
+          "ร่วมพัฒนาแอปอ่านบัตรประชาชน"
+        ],
+        "skills": [
+          "ESP32",
+          "ESP8266",
+          "Arduino",
+          "IoT",
+          "C++"
+        ]
+      }
+    ]
+  },
+  "certificates": {
+    "label": "ประกาศนียบัตร",
+    "title": "CERTIFICATES"
+  },
+  "contact": {
+    "label": "ติดต่อฉัน",
+    "title": "CONTACT",
+    "badge": "• CONTACT • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT",
+    "desc": "สนใจอยากร่วมงานหรืออยากพูดคุยก็ยินดีเสมอครับ ไม่ว่าจะเป็นโปรเจกต์ ความร่วมมือ หรือแค่อยากแลกเปลี่ยนความคิดเห็น ติดต่อมาได้เลยครับ — ยินดีคุยเสมอ",
+    "exit": "คลิกที่ใดก็ได้เพื่อปิดหน้าต่างนี้"
   }
 }
