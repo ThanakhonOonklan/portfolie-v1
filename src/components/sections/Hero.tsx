@@ -120,17 +120,17 @@ export default function Hero() {
       <div className="section-container relative z-10 w-full">
         <div className="grid grid-cols-12 gap-4">
           {/* Left content — spans 7 columns */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col" style={{ paddingTop: '20vh' }}>
+          <div className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left" style={{ paddingTop: 'clamp(100px, 18vh, 20vh)' }}>
             {/* Caption label */}
             <span
               ref={captionRef}
-              className="section-label mb-6 gsap-reveal font-en-body"
+              className="section-label mb-4 sm:mb-6 gsap-reveal font-en-body"
             >
               {t('hero.caption')}
             </span>
 
             {/* Name — oversized Anton */}
-            <h1 className="mb-8 gsap-reveal font-en-heading">
+            <h1 className="gsap-reveal font-en-heading">
               <span
                 ref={nameLine1Ref}
                 className="block font-en-heading"
@@ -154,10 +154,10 @@ export default function Hero() {
           </div>
 
           {/* Right side — Portrait Image Area with Scroll-triggered Parallax */}
-          <div className="col-span-12 lg:col-span-5 flex items-center justify-center lg:justify-end mt-12 lg:mt-0 relative z-10">
+          <div className="col-span-12 lg:col-span-5 flex items-center justify-center lg:justify-end mt-8 sm:mt-12 lg:mt-0 relative z-10">
             <div
               ref={portraitWrapperRef}
-              className="relative w-full max-w-[380px] aspect-[3/4] overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] group rounded-sm shadow-2xl backdrop-blur-md transition-all duration-300 glow-accent"
+              className="relative w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[380px] aspect-[3/4] overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] group rounded-sm shadow-2xl backdrop-blur-md transition-all duration-300 glow-accent"
               style={{
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.02)',
               }}
@@ -165,10 +165,10 @@ export default function Hero() {
               {/* Outer Glow Effect on Hover */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent)]/5 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               {/* Dynamic Tech Corners */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
-              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
+              <div className="absolute top-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-t border-l border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
+              <div className="absolute top-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-t border-r border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
+              <div className="absolute bottom-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-b border-l border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-b border-r border-white/30 z-20 pointer-events-none group-hover:border-[var(--accent)] transition-colors duration-300" />
 
               {/* Image Mode */}
               {!imgError ? (
@@ -189,7 +189,7 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
                   {/* Aesthetic geometric elements */}
-                  <svg className="w-20 h-20 text-white/20 mb-6 relative z-10" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                  <svg className="w-16 h-16 sm:w-20 sm:h-20 text-white/20 mb-6 relative z-10" viewBox="0 0 100 100" fill="none" stroke="currentColor">
                     <circle cx="50" cy="50" r="40" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_120s_linear_infinite]" />
                     <circle cx="50" cy="50" r="30" strokeWidth="1.5" strokeDasharray="10 5" className="animate-[spin_60s_linear_infinite_reverse] text-[var(--accent)]/40" />
                     <polygon points="50,25 72,65 28,65" strokeWidth="1" />
@@ -210,11 +210,11 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10 pointer-events-none" />
 
 
-              <div className="absolute bottom-6 left-6 flex flex-col gap-1 z-20 pointer-events-none">
-                <h5 className="text-white tracking-[0.1em] font-[family-name:var(--font-thai)] uppercase font-bold">
+              <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 flex flex-col gap-1 z-20 pointer-events-none">
+                <h5 className="text-white text-xs sm:text-base tracking-[0.1em] font-[family-name:var(--font-thai)] uppercase font-bold">
                   THANAKHON OONKLAN
                 </h5>
-                <span className="text-[9px] text-[var(--accent)] tracking-[0.15em] font-[family-name:var(--font-thai)] uppercase font-semibold">
+                <span className="text-[8px] sm:text-[9px] text-[var(--accent)] tracking-[0.15em] font-[family-name:var(--font-thai)] uppercase font-semibold">
                   {t('common.role').toUpperCase()}
                 </span>
               </div>
@@ -223,6 +223,17 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div
+        ref={scrollIndicatorRef}
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 scroll-indicator hidden sm:flex flex-col items-center gap-2"
+      >
+        <span className="text-[9px] text-[var(--text-muted)] tracking-[0.2em] uppercase font-[family-name:var(--font-body)]">
+          Scroll
+        </span>
+        <div className="w-px h-8 bg-gradient-to-b from-[var(--accent)]/60 to-transparent" />
       </div>
     </section>
   );

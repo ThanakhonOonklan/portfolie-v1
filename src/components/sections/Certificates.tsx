@@ -60,7 +60,7 @@ export default function Certificates() {
         </div>
 
         {/* Image-only grid — 4 columns, no frames, no text */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-8">
           {certificates.map((cert, index) => (
             <div
               key={cert.id}
@@ -97,6 +97,23 @@ export default function Certificates() {
                     >
                       <svg
                         className="w-5 h-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6" />
+                      </svg>
+                    </div>
+                  </div>
+                  {/* Mobile tap hint — always visible on touch */}
+                  <div className="absolute bottom-2 right-2 md:hidden">
+                    <div
+                      className="w-7 h-7 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+                    >
+                      <svg
+                        className="w-3.5 h-3.5 text-white/70"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={1.5}

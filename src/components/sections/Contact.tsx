@@ -30,11 +30,12 @@ export default function Contact() {
     >
       <div className="section-container">
         {/* Responsive Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
+        {/* Stacked center on mobile, side-by-side on md+ */}
+        <div className="flex flex-col md:flex-row md:grid md:grid-cols-12 gap-10 md:gap-16 items-center">
 
-          {/* Left Side: Circular Avatar Image with Spinning Text Badge */}
-          <div className="col-span-12 md:col-span-6 flex justify-center items-center relative">
-            <div className="relative w-[380px] h-[380px] flex items-center justify-center">
+          {/* Avatar with Spinning Text Badge */}
+          <div className="flex justify-center items-center relative md:col-span-6">
+            <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] flex items-center justify-center">
 
               {/* Infinite Rotating Circular Text Path SVG */}
               <div className="absolute inset-0 w-full h-full animate-[spin_40s_linear_infinite] select-none pointer-events-none">
@@ -54,8 +55,8 @@ export default function Contact() {
                 </svg>
               </div>
 
-              {/* Central Circular Avatar Wrapper with Soft Pink Glow */}
-              <div className="w-[250px] h-[250px] rounded-full overflow-hidden border-2 border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-2xl relative z-10 group glow-accent backdrop-blur-md">
+              {/* Central Circular Avatar */}
+              <div className="w-[180px] h-[180px] sm:w-[210px] sm:h-[210px] md:w-[250px] md:h-[250px] rounded-full overflow-hidden border-2 border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-2xl relative z-10 group glow-accent backdrop-blur-md">
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-[var(--accent)]/15 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
@@ -69,7 +70,7 @@ export default function Contact() {
                     className="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                 ) : (
-                  /* Fallback Gradient matching profile visual core online */
+                  /* Fallback */
                   <div className="w-full h-full bg-gradient-to-br from-neutral-950 to-neutral-900 flex flex-col items-center justify-center p-4">
                     <svg className="w-10 h-10 text-white/30 mb-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -83,13 +84,13 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Side: Contact Text & Links (Facebook, IG, LinkedIn, GitHub, Email) */}
-          <div className="col-span-12 md:col-span-6 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+          {/* Contact Text & Social Links — always centered on mobile */}
+          <div className="flex flex-col justify-center items-center text-center md:col-span-6 md:items-start md:text-left w-full">
             <span className="section-label block mb-4 font-[family-name:var(--font-body)] text-[var(--accent)] font-semibold tracking-[0.2em] gsap-reveal">
               {t('contact.label')}
             </span>
 
-            {/* Bold Heading in Anton font */}
+            {/* Bold Heading */}
             <h2
               className="font-[family-name:var(--font-heading)] text-white mb-6 tracking-wide gsap-reveal font-en-heading"
               style={{ fontSize: 'var(--text-display)', lineHeight: 0.95 }}
@@ -98,19 +99,19 @@ export default function Contact() {
             </h2>
 
             <p
-              className="text-[var(--text-secondary)] font-[family-name:var(--font-body)] mb-14 max-w-md leading-relaxed gsap-reveal"
+              className="text-[var(--text-secondary)] font-[family-name:var(--font-body)] mb-10 sm:mb-14 max-w-sm sm:max-w-md leading-relaxed gsap-reveal mx-auto md:mx-0"
               style={{ fontSize: 'var(--text-body)' }}
             >
               {t('contact.desc')}
             </p>
 
-            {/* Clickable Social Icons (Facebook, IG, LinkedIn, GitHub, Email) */}
-            <div className="flex flex-wrap items-center gap-6 justify-center md:justify-start gsap-reveal">
+            {/* Social Icons */}
+            <div className="flex flex-wrap items-center gap-4 sm:gap-5 justify-center md:justify-start gsap-reveal">
 
               {/* Email */}
               <a
                 href={socialLinks.email}
-                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="Email"
                 aria-label="Email"
               >
@@ -124,7 +125,7 @@ export default function Contact() {
                 href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="Facebook"
                 aria-label="Facebook"
               >
@@ -133,14 +134,12 @@ export default function Contact() {
                 </svg>
               </a>
 
-
-
               {/* LinkedIn */}
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="LinkedIn"
                 aria-label="LinkedIn"
               >
@@ -154,7 +153,7 @@ export default function Contact() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent)] transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow-accent backdrop-blur-sm"
                 title="GitHub"
                 aria-label="GitHub"
               >

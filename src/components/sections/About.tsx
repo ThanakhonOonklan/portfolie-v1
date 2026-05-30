@@ -80,10 +80,10 @@ export default function About() {
         {/* Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left — Image / Visual Area */}
-          <div className="col-span-12 lg:col-span-5">
+          <div className="hidden lg:block col-span-12 lg:col-span-5">
             <div
               ref={imageRef}
-              className="sticky top-28 w-full max-w-[360px] xl:max-w-[420px] mx-auto lg:mx-0"
+              className="lg:sticky lg:top-28 w-full max-w-[300px] sm:max-w-[360px] xl:max-w-[420px] mx-auto lg:mx-0"
             >
               {/* About Me Portrait */}
               <div
@@ -143,7 +143,7 @@ export default function About() {
 
 
               {/* Vertical Stack of structured content blocks (clean minimalist text entries) */}
-              <div className="flex flex-col gap-14 pt-10">
+              <div className="flex flex-col gap-8 md:gap-10 lg:gap-14 pt-6 lg:pt-10">
                 {/* Block 1: Who I Am */}
                 <div className="space-y-4 group">
                   <div className="flex items-center gap-3 transition-all duration-300 group-hover:translate-x-2">
@@ -156,7 +156,7 @@ export default function About() {
                       {t('about.who_i_am_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
                     {t('about.who_i_am_desc')}
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function About() {
                       {t('about.interest_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
                     {t('about.interest_desc')}
                   </p>
                 </div>
@@ -192,7 +192,7 @@ export default function About() {
                       {t('about.education_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
                     {t('about.education_desc')}
                   </p>
                 </div>
@@ -209,7 +209,7 @@ export default function About() {
                       {t('about.goals_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
                     {t('about.goals_desc')}
                   </p>
                 </div>

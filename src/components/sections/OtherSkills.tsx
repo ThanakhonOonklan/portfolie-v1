@@ -85,14 +85,14 @@ export default function OtherSkills() {
         </div>
 
         {/* Cards Grid */}
-        <div className="block space-y-[20vh]">
+        <div className="block space-y-24 md:space-y-32 lg:space-y-[20vh]">
           {otherSkills.map((item, index) => {
             const description = isEN && item.descriptionEn ? item.descriptionEn : item.description;
 
             return (
               <div key={item.id} className="other-skill-row grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 lg:items-start">
                 {/* Content Column */}
-                <div className="lg:col-span-5 flex flex-col justify-center lg:order-last">
+                <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-last">
                     {/* Category + Year */}
                     <div className="flex items-center gap-3 mb-6">
                       <span className="text-[var(--text-caption)] text-[var(--accent)] font-[family-name:var(--font-body)] tracking-widest uppercase font-en-body font-semibold">
@@ -138,9 +138,9 @@ export default function OtherSkills() {
                   </div>
 
                   {/* Image / Gallery Column */}
-                  <div className="lg:col-span-7 lg:order-first">
+                  <div className="lg:col-span-7 order-1 lg:order-first">
                     {item.images && item.images.length > 0 ? (
-                      <div className="columns-2 lg:columns-3 gap-4 space-y-4">
+                      <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
                         {item.images.map((img, i) => (
                           <div
                             key={i}
@@ -195,7 +195,8 @@ export default function OtherSkills() {
           onClick={() => setSelectedImage(null)}
         >
           <button 
-            className="absolute top-6 right-6 text-[var(--text-muted)] hover:text-white transition-colors duration-300 bg-black/20 hover:bg-white/10 rounded-full p-2"
+            className="absolute right-4 sm:right-6 text-[var(--text-muted)] hover:text-white transition-colors duration-300 bg-black/20 hover:bg-white/10 rounded-full p-2 z-10"
+            style={{ top: 'max(env(safe-area-inset-top, 16px), 16px)' }}
             onClick={(e) => {
               e.stopPropagation();
               setSelectedImage(null);

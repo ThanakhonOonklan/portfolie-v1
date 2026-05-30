@@ -68,7 +68,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
         {/* Image Column */}
         <div
           ref={imageRef}
-          className={`lg:col-span-7 sticky top-28 self-start z-10 ${isEven ? 'lg:order-2' : 'lg:order-1'
+          className={`lg:col-span-7 lg:sticky lg:top-28 self-start z-10 ${isEven ? 'lg:order-2' : 'lg:order-1'
             }`}
         >
           <ProjectGallery
@@ -121,7 +121,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
             {project.liveUrl && (
               <Button
                 variant="outline"
-                className="!h-10 !px-6 !py-0 inline-flex items-center justify-center border border-[var(--accent)]/30 bg-[var(--glass-bg)] text-[var(--accent)] hover:text-white hover:border-[var(--accent)] hover:shadow-[0_0_20px_var(--glow-accent)] text-[10px] font-semibold uppercase tracking-[0.15em] rounded-sm transition-all duration-300 cursor-pointer overflow-hidden font-en-body"
+                className="!h-12 sm:!h-10 !px-5 sm:!px-6 !py-0 inline-flex items-center justify-center border border-[var(--accent)]/30 bg-[var(--glass-bg)] text-[var(--accent)] hover:text-white hover:border-[var(--accent)] hover:shadow-[0_0_20px_var(--glow-accent)] text-xs sm:text-[10px] font-semibold uppercase tracking-[0.15em] rounded-sm transition-all duration-300 cursor-pointer overflow-hidden font-en-body"
                 onClick={() => window.open(project.liveUrl, '_blank', 'noopener,noreferrer')}
               >
                 {/* Background sliding accent highlight */}
