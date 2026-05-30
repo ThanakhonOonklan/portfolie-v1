@@ -1,7 +1,0 @@
-email: [EMAIL_ADDRESS]
-facebook : https://www.facebook.com/thanakhon.oonklan
-instagram : https://www.instagram.com/jtnk__/
-linkedin : https://www.linkedin.com/in/thanakhon-oonklan-431766292/
-github : https://github.com/ThanakhonOonklan
-
-เเละเขียน รายละเอียดด้านล่างด้วยนะ เช่นโปรดติดตต่อเราาา หรืออื่นๆ

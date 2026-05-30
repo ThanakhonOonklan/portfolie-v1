@@ -18,7 +18,24 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  // Track which images have been fully loaded into browser cache
+  const [loadedSet, setLoadedSet] = useState<Set<number>>(new Set([0]));
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Preload ALL images immediately when component mounts
+  // so switching is instant (no network fetch on click)
+  useEffect(() => {
+    if (allImages.length <= 1) return;
+    allImages.forEach((src, i) => {
+      if (i === 0) return; // index 0 already rendered
+      const img = new window.Image();
+      img.src = src;
+      img.onload = () => {
+        setLoadedSet(prev => new Set(prev).add(i));
+      };
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const goTo = useCallback((index: number) => {
     if (index === activeIndex) return;
@@ -92,6 +109,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
         }}
       >
         {/* Active Image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           key={activeIndex}
           src={allImages[activeIndex]}
@@ -100,6 +118,13 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
             isTransitioning ? 'opacity-0' : 'opacity-100'
           }`}
         />
+
+        {/* Loading indicator — shown only if image hasn't been preloaded yet */}
+        {!loadedSet.has(activeIndex) && !isTransitioning && (
+          <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg-elevated)]/60 backdrop-blur-sm pointer-events-none">
+            <div className="w-8 h-8 border-2 border-white/20 border-t-[var(--accent)] rounded-full animate-spin" />
+          </div>
+        )}
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
@@ -160,6 +185,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
               style={{ width: 80, aspectRatio: '16 / 10' }}
               aria-label={`View image ${i + 1}`}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={src}
                 alt={`Thumbnail ${i + 1}`}

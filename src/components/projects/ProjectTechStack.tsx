@@ -1,25 +1,45 @@
 'use client';
 
+import { useTranslation } from '@/hooks';
+
 interface ProjectTechStackProps {
+  whatIDid: string[];
   techStack: string[];
   features: string[];
   results: string[];
 }
 
-export function ProjectTechStack({ techStack, features, results }: ProjectTechStackProps) {
+export function ProjectTechStack({ whatIDid, techStack, features, results }: ProjectTechStackProps) {
+  const { t } = useTranslation();
+
   return (
     <>
+      {/* What I Did */}
+      <div className="mb-8">
+        <span className="section-label block mb-4 font-[family-name:var(--font-body)]">{t('projects.what_i_did')}</span>
+        <ul className="space-y-2">
+          {whatIDid.map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-[family-name:var(--font-body)]"
+            >
+              <span className="text-[var(--accent)] shrink-0 h-[1.625em] flex items-center justify-center">
+                <div className="w-1.5 h-1.5 rounded-full bg-current" />
+              </span>
+              <span className="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {/* Tech Stack */}
       <div className="mb-8">
-        <span className="section-label block mb-4">Tech Stack</span>
-        <div className="flex flex-wrap gap-2">
+        <span className="section-label block mb-4 font-[family-name:var(--font-body)]">{t('projects.tech_stack')}</span>
+        <div className="flex flex-wrap gap-2.5">
           {techStack.map((tech) => (
             <span
               key={tech}
-              className="text-[var(--text-caption)] text-[var(--text-secondary)] font-[family-name:var(--font-body)] px-3 py-1.5"
-              style={{
-                border: '1px solid var(--border)',
-              }}
+              className="inline-flex items-center justify-center text-[11px] font-medium text-[var(--text-secondary)] font-[family-name:var(--font-body)] px-4 py-1.5 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-full hover:border-[var(--accent)] hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-[0_0_12px_var(--glow-accent)] hover:bg-white/[0.01] font-en-body"
             >
               {tech}
             </span>
@@ -27,36 +47,34 @@ export function ProjectTechStack({ techStack, features, results }: ProjectTechSt
         </div>
       </div>
 
-      {/* Features */}
+      {/* Key Features */}
       <div className="mb-8">
-        <span className="section-label block mb-4">Key Features</span>
+        <span className="section-label block mb-4 font-[family-name:var(--font-body)]">{t('projects.key_features')}</span>
         <ul className="space-y-2">
           {features.map((feature, i) => (
             <li
               key={i}
               className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-[family-name:var(--font-body)]"
             >
-              <span className="text-[var(--accent)] mt-1.5 shrink-0">
-                <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
-                  <circle cx="3" cy="3" r="3" />
-                </svg>
+              <span className="text-[var(--accent)] shrink-0 h-[1.625em] flex items-center justify-center">
+                <div className="w-1.5 h-1.5 rounded-full bg-current" />
               </span>
-              <span>{feature}</span>
+              <span className="leading-relaxed">{feature}</span>
             </li>
           ))}
         </ul>
       </div>
 
       {/* Results */}
-      <div className="mb-10">
-        <span className="section-label block mb-4">Results</span>
+      <div className="mb-8">
+        <span className="section-label block mb-4 font-[family-name:var(--font-body)]">{t('projects.results')}</span>
         <div className="space-y-2">
           {results.map((result, i) => (
             <p
               key={i}
-              className="text-sm text-white font-[family-name:var(--font-body)] font-medium"
+              className="text-sm text-white font-[family-name:var(--font-body)] font-medium flex items-center gap-2"
             >
-              ↗ {result}
+              <span className="text-[var(--accent)]">↗</span> {result}
             </p>
           ))}
         </div>

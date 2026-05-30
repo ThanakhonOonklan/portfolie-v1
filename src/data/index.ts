@@ -3,3 +3,4 @@ export { experiences } from './experience';
 export { skills, skillCategories } from './skills';
 export { certificates } from './certificates';
 export { navItems } from './navigation';
+export { otherSkills } from './otherSkills';

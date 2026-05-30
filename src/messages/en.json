@@ -1,6 +1,13 @@
 {
+  "common": {
+    "name_first": "THANAKHON",
+    "name_last": "OONKLAN",
+    "name_full": "THANAKHON OONKLAN",
+    "role": "Junior Frontend Developer"
+  },
   "nav": {
     "projects": "Projects",
+    "other_skills": "Other Skills",
     "experience": "Experience",
     "skills": "Skills",
     "certificates": "Certificates",
@@ -8,10 +15,112 @@
     "contact": "Contact"
   },
   "hero": {
-    "caption": "Creative Frontend Developer",
+    "caption": "Junior Frontend Developer",
     "tagline": "Crafting immersive digital experiences through modern frontend development, interactive design, and motion-driven interfaces.",
     "cta_work": "View My Work",
     "cta_contact": "Get In Touch",
     "scroll": "Scroll"
+  },
+  "about": {
+    "label": "About Me",
+    "who_i_am_title": "Who I Am",
+    "who_i_am_desc": "Hello, my name is Thanakhon Oonklan, but you can call me \"Jay\". I am someone who loves building practical things, whether they are web applications or robots.\nCurrently, I am studying Frontend Development and UX/UI Design.",
+    "interest_title": "Interests",
+    "interest_desc": "I am interested in building web applications, especially with Next.js and TypeScript. I also enjoy Robotics and IoT.",
+    "education_title": "Education & Skills",
+    "education_desc": "King Mongkut's University of Technology North Bangkok, Prachinburi Campus (2nd Year)\nBachelor of Industrial Technology in Information Technology (Continuing Program)",
+    "goals_title": "My Goals",
+    "goals_desc": "My short-term goal is to become a Frontend Developer first. For the long-term, I want to grow into a Full Stack Developer who can build products from end to end, and use my knowledge of IoT to create useful things."
+  },
+  "projects": {
+    "label": "Selected Work",
+    "title": "FEATURED PROJECTS",
+    "what_i_did": "What I Did",
+    "tech_stack": "Tech Stack",
+    "key_features": "Key Features",
+    "results": "Results"
+  },
+  "other_skills": {
+    "label": "OTHER SKILLS",
+    "title": "Other Skills",
+    "tools_label": "TOOLS USED",
+    "view_image": "View Image"
+  },
+  "skills_section": {
+    "label": "What I Work With",
+    "title": "TECH STACK"
+  },
+  "experience": {
+    "label": "Career Journey",
+    "title": "EXPERIENCE",
+    "description_label": "Description / Responsibilities",
+    "skills_label": "SKILLS",
+    "items": [
+      {
+        "year": "2026",
+        "company": "Thinking Skills Games for Kids",
+        "role": "Junior Frontend Developer",
+        "description": [
+          "Developed UI and game systems for 7 mini-games with 9 levels each (63 levels total)",
+          "Designed for a target audience of children aged 5–7 years old",
+          "Built animation systems and game logic for all mini-games",
+          "Supports 2 languages (Thai / English)"
+        ],
+        "skills": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "PostgreSQL",
+          "Figma"
+        ]
+      },
+      {
+        "year": "2025",
+        "company": "IoT Equipment Borrowing System",
+        "role": "Freelance Full Stack Developer",
+        "description": [
+          "Freelance development of an IoT equipment borrowing & returning web application",
+          "Developed both Frontend and Backend, covering equipment and user management systems",
+          "Designed the database schema and UI from scratch to deployment"
+        ],
+        "skills": [
+          "React",
+          "Tailwind CSS",
+          "TypeScript",
+          "PHP",
+          "MySQL",
+          "Supabase",
+          "Vercel"
+        ]
+      },
+      {
+        "year": "2025",
+        "company": "Wireless Solution Asia",
+        "role": "Internship — Robotics & IoT Developer",
+        "description": [
+          "Developed an ESP32 robot controlled via mobile phone, including movement and gripping commands",
+          "Taught and demonstrated robot usage to students",
+          "Collaborated on developing a National ID card reader application"
+        ],
+        "skills": [
+          "ESP32",
+          "ESP8266",
+          "Arduino",
+          "IoT",
+          "C++"
+        ]
+      }
+    ]
+  },
+  "certificates": {
+    "label": "Continuous Learning",
+    "title": "CERTIFICATES"
+  },
+  "contact": {
+    "label": "GET IN TOUCH",
+    "title": "CONTACT",
+    "badge": "• CONTACT • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT",
+    "desc": "Feel free to reach out for collaborations, projects, or just to say hi! I'm always open to discussing new ideas, and I'll respond as soon as possible.",
+    "exit": "Click anywhere to exit view"
   }
 }
