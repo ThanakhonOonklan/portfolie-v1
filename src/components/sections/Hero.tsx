@@ -174,7 +174,7 @@ export default function Hero() {
               {!imgError ? (
                 <img
                   ref={portraitImageRef}
-                  src="/images/profile/profile-2.jpg"
+                  src="/images/profile/profile-3.jpg"
                   alt="Thanakhon Oonklan Portrait"
                   onError={() => setImgError(true)}
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out scale-100"
