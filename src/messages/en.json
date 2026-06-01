@@ -3,7 +3,7 @@
     "name_first": "THANAKHON",
     "name_last": "OONKLAN",
     "name_full": "THANAKHON OONKLAN",
-    "role": "Junior Frontend Developer"
+    "role": "JUNIOR FULL STACK DEVELOPER"
   },
   "nav": {
     "projects": "Projects",
@@ -15,7 +15,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "caption": "Junior Frontend Developer",
+    "caption": "JUNIOR FULL STACK DEVELOPER",
     "intro": "Crafting immersive digital experiences through modern frontend development, interactive design, and motion-driven interfaces.",
     "tagline": "Crafting immersive digital experiences through modern frontend development, interactive design, and motion-driven interfaces.",
     "cta": "View My Work",
@@ -27,7 +27,7 @@
   "about": {
     "label": "About Me",
     "who_i_am_title": "Who I Am",
-    "who_i_am_desc": "Hello, my name is Thanakhon Oonklan, but you can call me \"Jay\". I am someone who loves building practical things, whether they are web applications or robots.\nCurrently, I am studying Frontend Development and UX/UI Design.",
+    "who_i_am_desc": "Hello, my name is JJ. I am currently studying Backend Development and working toward becoming a Full Stack Developer. I have a foundation in Frontend Development, UI/UX, and Web Application Development, with hands-on experience building projects using Next.js, React, and TypeScript.",
     "interest_title": "Interests",
     "interest_desc": "I am interested in building web applications, especially with Next.js and TypeScript. I also enjoy Robotics and IoT.",
     "education_title": "Education & Skills",

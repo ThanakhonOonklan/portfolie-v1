@@ -64,7 +64,7 @@ export default function Contact() {
                 {/* The Avatar Image */}
                 {!imgError ? (
                   <img
-                    src="/images/profile/profile-2.jpg"
+                    src="/images/profile/profile-3.jpg"
                     alt="Thanakhon Oonklan - Contact"
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
