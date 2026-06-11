@@ -3,6 +3,7 @@ import { Anton, Inter, Sarabun, Geist } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/providers";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/next";
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <AppProviders>{children}</AppProviders>
+        <Analytics />
       </body>
     </html>
   );
