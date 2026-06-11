@@ -80,7 +80,7 @@ export default function About() {
         {/* Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left — Image / Visual Area */}
-          <div className="hidden lg:block col-span-12 lg:col-span-5">
+          <div className="hidden lg:block lg:col-span-5">
             <div
               ref={imageRef}
               className="lg:sticky lg:top-28 w-full max-w-[300px] sm:max-w-[360px] xl:max-w-[420px] mx-auto lg:mx-0"
@@ -129,7 +129,7 @@ export default function About() {
           </div>
 
           {/* Right — Content */}
-          <div className="col-span-12 lg:col-span-6 lg:col-start-7 flex flex-col justify-center" ref={storyRef}>
+          <div className="lg:col-span-6 lg:col-start-7 flex flex-col justify-center min-w-0" ref={storyRef}>
             {/* Section Label */}
             <span className="section-label block mb-2 font-[family-name:var(--font-body)]">{t('about.label')}</span>
 
