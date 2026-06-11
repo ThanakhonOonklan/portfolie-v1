@@ -156,7 +156,7 @@ export default function Certificates() {
             {/* Close button */}
             <button
               onClick={closeModal}
-              className="absolute -top-12 right-0 text-white/60 hover:text-white transition-colors duration-200 flex items-center gap-2 text-sm font-[family-name:var(--font-body)]"
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 text-white/70 hover:text-white transition-colors duration-200 flex items-center gap-2 text-sm font-[family-name:var(--font-body)] bg-black/40 backdrop-blur-sm rounded-full px-3 py-2"
               aria-label="Close"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">

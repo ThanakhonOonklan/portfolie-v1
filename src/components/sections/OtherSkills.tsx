@@ -140,7 +140,7 @@ export default function OtherSkills() {
                   {/* Image / Gallery Column */}
                   <div className="lg:col-span-7 order-1 lg:order-first">
                     {item.images && item.images.length > 0 ? (
-                      <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
+                      <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 md:gap-5 space-y-3 sm:space-y-4">
                         {item.images.map((img, i) => (
                           <div
                             key={i}

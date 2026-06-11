@@ -81,7 +81,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
           </div>
         </div>
         <div
-          className="relative -mt-12 ml-8 lg:ml-16 w-2/3 max-w-[400px] overflow-hidden shadow-2xl"
+          className="relative -mt-12 ml-8 lg:ml-16 w-2/3 max-w-[400px] min-w-0 overflow-hidden shadow-2xl"
           style={{ aspectRatio: '16 / 10', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border)' }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
@@ -172,7 +172,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
 
       {/* ── Thumbnail Strip (UI Preview) ── */}
       {allImages.length > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-none max-w-full">
           {allImages.map((src, i) => (
             <button
               key={i}

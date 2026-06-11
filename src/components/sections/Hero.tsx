@@ -118,7 +118,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="section-container relative z-10 w-full">
-        <div className="grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-12 gap-6 lg:gap-4">
           {/* Left content — spans 7 columns */}
           <div className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left" style={{ paddingTop: 'clamp(100px, 18vh, 20vh)' }}>
             {/* Caption label */}
@@ -154,7 +154,7 @@ export default function Hero() {
           </div>
 
           {/* Right side — Portrait Image Area with Scroll-triggered Parallax */}
-          <div className="col-span-12 lg:col-span-5 flex items-center justify-center lg:justify-end mt-8 sm:mt-12 lg:mt-0 relative z-10">
+          <div className="col-span-12 lg:col-span-5 flex items-center justify-center lg:justify-end mt-6 sm:mt-10 lg:mt-0 pb-12 sm:pb-16 lg:pb-0 relative z-10">
             <div
               ref={portraitWrapperRef}
               className="relative w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[380px] aspect-[3/4] overflow-hidden border border-[var(--glass-border)] bg-[var(--glass-bg)] group rounded-sm shadow-2xl backdrop-blur-md transition-all duration-300 glow-accent"

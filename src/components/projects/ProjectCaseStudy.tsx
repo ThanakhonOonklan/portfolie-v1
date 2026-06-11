@@ -68,7 +68,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
         {/* Image Column */}
         <div
           ref={imageRef}
-          className={`lg:col-span-7 lg:sticky lg:top-28 self-start z-10 ${isEven ? 'lg:order-2' : 'lg:order-1'
+          className={`lg:col-span-7 lg:sticky lg:top-28 self-start z-10 min-w-0 ${isEven ? 'lg:order-2' : 'lg:order-1'
             }`}
         >
           <ProjectGallery
@@ -81,7 +81,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
 
         {/* Content Column */}
         <div
-          className={`lg:col-span-5 flex flex-col justify-center ${isEven ? 'lg:order-1' : 'lg:order-2'
+          className={`lg:col-span-5 flex flex-col justify-center min-w-0 ${isEven ? 'lg:order-1' : 'lg:order-2'
             }`}
         >
           {/* Number + Year */}

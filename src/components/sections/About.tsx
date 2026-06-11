@@ -156,7 +156,7 @@ export default function About() {
                       {t('about.who_i_am_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 break-words">
                     {t('about.who_i_am_desc')}
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function About() {
                       {t('about.interest_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 break-words">
                     {t('about.interest_desc')}
                   </p>
                 </div>
@@ -192,8 +192,10 @@ export default function About() {
                       {t('about.education_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
-                    {t('about.education_desc')}
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 break-words">
+                    {t('about.education_desc').split('\n').map((line: string, i: number) => (
+                      <span key={i} className="block">{line}</span>
+                    ))}
                   </p>
                 </div>
 
@@ -209,7 +211,7 @@ export default function About() {
                       {t('about.goals_title')}
                     </h4>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 whitespace-pre-line">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed font-light font-[family-name:var(--font-body)] pl-6 md:pl-9 break-words">
                     {t('about.goals_desc')}
                   </p>
                 </div>

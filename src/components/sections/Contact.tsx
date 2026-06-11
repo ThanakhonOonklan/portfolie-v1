@@ -31,7 +31,7 @@ export default function Contact() {
       <div className="section-container">
         {/* Responsive Grid layout */}
         {/* Stacked center on mobile, side-by-side on md+ */}
-        <div className="flex flex-col md:flex-row md:grid md:grid-cols-12 gap-10 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
 
           {/* Avatar with Spinning Text Badge */}
           <div className="flex justify-center items-center relative md:col-span-6">
