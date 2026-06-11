@@ -52,12 +52,19 @@ export default function Experience() {
               <div className="grid grid-cols-12 gap-4 lg:gap-8">
                 {/* Year Column */}
                 <div className="col-span-12 lg:col-span-2 flex lg:items-center lg:justify-end">
-                  <span
-                    className="font-[family-name:var(--font-heading)] text-[var(--text-muted)] lg:text-right font-en-heading"
-                    style={{ fontSize: 'var(--text-headline)' }}
-                  >
-                    {exp.year}
-                  </span>
+                  <div className="flex items-center gap-3 lg:gap-0">
+                    {/* Mobile dot indicator */}
+                    <div
+                      className="lg:hidden w-2.5 h-2.5 rounded-full shrink-0 border border-white/20 shadow-[0_0_8px_var(--glow-accent)]"
+                      style={{ backgroundColor: 'var(--accent)' }}
+                    />
+                    <span
+                      className="font-[family-name:var(--font-heading)] text-[var(--text-muted)] lg:text-right font-en-heading"
+                      style={{ fontSize: 'var(--text-headline)' }}
+                    >
+                      {exp.year}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Timeline Line Column */}
@@ -83,7 +90,7 @@ export default function Experience() {
                 </div>
 
                 {/* Content Column */}
-                <div className="col-span-12 lg:col-span-9">
+                <div className="col-span-12 lg:col-span-9 border-l-2 border-white/5 lg:border-l-0 pl-5 lg:pl-0">
                   {/* Role */}
                   <h3
                     className="font-[family-name:var(--font-heading)] text-white mb-4 font-en-heading"

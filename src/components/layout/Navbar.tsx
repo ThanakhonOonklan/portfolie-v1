@@ -119,19 +119,32 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile backdrop overlay */}
+      {isMobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-20 bg-black/40 backdrop-blur-sm z-[-1]"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
       <div
-        className={`md:hidden transition-all duration-500 overflow-hidden bg-[#0F0F0F]/90 backdrop-blur-xl border-b border-[var(--glass-border)] ${isMobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden transition-all duration-500 overflow-hidden bg-[#0F0F0F]/95 backdrop-blur-xl border-b border-[var(--glass-border)] ${isMobileOpen ? 'max-h-[80dvh] opacity-100' : 'max-h-0 opacity-0'
           }`}
       >
-        <div className="section-container pb-8 flex flex-col gap-6">
-          {navItems.map((item) => {
+        <div className="section-container pt-4 pb-8 flex flex-col gap-5">
+          {navItems.map((item, index) => {
             const key = item.href.replace('#', '').replace(/-/g, '_');
             return (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className="text-sm font-[family-name:var(--font-body)] font-medium uppercase tracking-[0.15em] text-[var(--text-secondary)] hover:text-white transition-colors duration-300"
+                className="text-sm font-[family-name:var(--font-body)] font-medium uppercase tracking-[0.15em] text-[var(--text-secondary)] hover:text-white transition-all duration-300 hover:translate-x-2 hover:text-[var(--accent)] py-2 block"
+                style={{
+                  opacity: isMobileOpen ? 1 : 0,
+                  transform: isMobileOpen ? 'translateY(0)' : 'translateY(-8px)',
+                  transition: `opacity 0.3s ease ${index * 0.05}s, transform 0.3s ease ${index * 0.05}s, color 0.3s ease`,
+                }}
               >
                 {t(`nav.${key}`)}
               </a>

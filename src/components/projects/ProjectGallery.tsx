@@ -81,7 +81,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
           </div>
         </div>
         <div
-          className="relative -mt-12 ml-8 lg:ml-16 w-2/3 max-w-[400px] overflow-hidden shadow-2xl"
+          className="relative -mt-12 ml-8 lg:ml-16 w-2/3 max-w-[400px] min-w-0 overflow-hidden shadow-2xl"
           style={{ aspectRatio: '16 / 10', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border)' }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
@@ -139,7 +139,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
           <>
             <button
               onClick={() => goTo((activeIndex - 1 + allImages.length) % allImages.length)}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:bg-black/80 transition-all duration-200"
+              className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white opacity-80 md:opacity-0 md:group-hover:opacity-100 hover:bg-black/80 transition-all duration-200"
               aria-label="Previous image"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +148,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
             </button>
             <button
               onClick={goNext}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:bg-black/80 transition-all duration-200"
+              className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white opacity-80 md:opacity-0 md:group-hover:opacity-100 hover:bg-black/80 transition-all duration-200"
               aria-label="Next image"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -172,7 +172,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
 
       {/* ── Thumbnail Strip (UI Preview) ── */}
       {allImages.length > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-none max-w-full">
           {allImages.map((src, i) => (
             <button
               key={i}

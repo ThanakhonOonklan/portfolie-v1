@@ -92,12 +92,49 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* --- Mobile-specific Design Token Overrides --- */
+@media (max-width: 640px) {
+  :root {
+    --space-section: clamp(72px, 12vh, 120px);
+    --space-block: clamp(40px, 8vh, 72px);
+    --space-element: clamp(32px, 5vh, 56px);
+    --space-group: clamp(16px, 2.5vh, 32px);
+    --text-hero: clamp(2.75rem, 13vw, 4rem);
+    --text-display: clamp(2.25rem, 8vw, 3rem);
+    --padding-x: clamp(1.25rem, 5vw, 2rem);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  :root {
+    --space-section: clamp(100px, 14vh, 160px);
+    --space-block: clamp(56px, 9vh, 100px);
+    --text-hero: clamp(3.5rem, 9vw, 5rem);
+  }
+}
+
 /* --- Base Styles --- */
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
   padding: 0;
 }

@@ -25,13 +25,13 @@ export default function Skills() {
 
         {/* Centered Title */}
         <h2
-          className="section-title text-center mb-20 gsap-reveal font-en-heading uppercase"
+          className="section-title text-center mb-10 md:mb-16 lg:mb-20 gsap-reveal font-en-heading uppercase"
         >
           {t('skills_section.title')}
         </h2>
 
         {/* All icons — single open area, flex-wrap centered */}
-        <div className="flex flex-wrap justify-center gap-x-10 gap-y-10 gsap-reveal">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-10 lg:gap-x-10 lg:gap-y-10 gsap-reveal">
           {skills.map((skill) => (
             <div
               key={skill.name}
@@ -44,7 +44,7 @@ export default function Skills() {
                   alt={skill.name}
                   width={52}
                   height={52}
-                  className="w-13 h-13 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+                  className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
                 />
               ) : (
                 <div className="w-13 h-13 rounded bg-white/5" />
